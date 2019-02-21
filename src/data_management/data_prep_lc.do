@@ -15,8 +15,8 @@ include project_paths
 log using `"${PATH_OUT_DATA}/log/`1'.log"', replace
 
 
-// Read in data management controls
-do `"${PATH_OUT_MODEL_SPECS}/data_prep"'
+// Read in file names
+do `"${PATH_OUT_MODEL_SPECS}/file_names"'
 
 
 // Generate all loan data
