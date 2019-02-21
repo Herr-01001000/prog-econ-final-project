@@ -49,3 +49,14 @@ def build(ctx):
         target=ctx.path_to(ctx, 'OUT_DATA', 'gdp.dta'),
         name='data_prep_gdp'
     )
+
+    ctx(
+        features='run_py_script',
+        source='data_prep_pi.py',
+        deps=[
+            ctx.path_to(ctx, 'IN_DATA', 'SAINC1_1998_2017_ALL_AREAS.csv'),
+            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json')
+        ],
+        target=ctx.path_to(ctx, 'OUT_DATA', 'pi.dta'),
+        name='data_prep_gdp'
+    )
