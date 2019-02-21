@@ -16,10 +16,6 @@ def build(ctx):
     ctx(
         features='run_do_script',
         source='data_prep_lc.do',
-        target=[
-            ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_lc.log'),
-            ctx.path_to(ctx, 'OUT_DATA', 'LoanStats_all.dta')
-        ],
         deps=[
             ctx.path_to(ctx, 'IN_DATA', 'LoanStats3a.csv'),
             ctx.path_to(ctx, 'IN_DATA', 'LoanStats3b.csv'),
@@ -35,6 +31,21 @@ def build(ctx):
             ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2017Q4.csv'),
             ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2018Q1.csv'),
             ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2018Q2.csv'),
-            out_models('data_prep.do')
+            out_models('file_names.do')
         ],
+        target=[
+            ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_lc.log'),
+            ctx.path_to(ctx, 'OUT_DATA', 'LoanStats_all.dta')
+        ],
+    )
+
+    ctx(
+        features='run_py_script',
+        source='data_prep_gdp.py',
+        deps=[
+            ctx.path_to(ctx, 'IN_DATA', 'SAGDP2N__ALL_AREAS_1997_2017.csv'),
+            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json')
+        ],
+        target=ctx.path_to(ctx, 'OUT_DATA', 'gdp.dta'),
+        name='data_prep_gdp'
     )
