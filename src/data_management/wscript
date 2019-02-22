@@ -1,5 +1,7 @@
 #! python
 
+import os
+
 
 def build(ctx):
 
@@ -11,6 +13,17 @@ def build(ctx):
         source='get_simulation_draws.py',
         target=ctx.path_to(ctx, 'OUT_DATA', 'initial_locations.csv'),
         name='get_simulation_draws'
+    )
+
+    abspath = os.path.join(ctx.path.abspath(), 'test_cleaner.py')
+    ctx(
+        features='run_py_script',
+        source='test_cleaner.py',
+        deps=[
+            ctx.path_to(ctx, 'IN_MODEL_CODE', 'data_cleaner.py'),
+            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json')
+        ],
+        append=abspath
     )
 
     ctx(
@@ -58,5 +71,5 @@ def build(ctx):
             ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json')
         ],
         target=ctx.path_to(ctx, 'OUT_DATA', 'pi.dta'),
-        name='data_prep_gdp'
+        name='data_prep_pi'
     )
