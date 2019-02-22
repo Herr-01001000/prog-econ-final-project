@@ -53,6 +53,19 @@ def build(ctx):
     )
 
     ctx(
+        features='run_do_script',
+        source='data_prep_bankloan.do',
+        deps=[
+            ctx.path_to(ctx, 'IN_DATA', 'area_report_by_year.xlsx'),
+            out_models('file_names.do')
+        ],
+        target=[
+            ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_bankloan.log'),
+            ctx.path_to(ctx, 'OUT_DATA', 'bankloan.dta')
+        ],
+    )
+
+    ctx(
         features='run_py_script',
         source='data_prep_gdp.py',
         deps=[
