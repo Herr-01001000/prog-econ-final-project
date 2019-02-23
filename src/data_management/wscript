@@ -86,3 +86,14 @@ def build(ctx):
         target=ctx.path_to(ctx, 'OUT_DATA', 'pi.dta'),
         name='data_prep_pi'
     )
+
+    ctx(
+        features='run_py_script',
+        source='data_prep_internet.py',
+        deps=[
+            ctx.path_to(ctx, 'IN_DATA', 'ntia-analyze-table.csv'),
+            ctx.path_to(ctx, 'IN_MODEL_CODE', 'data_cleaner.py')
+        ],
+        target=ctx.path_to(ctx, 'OUT_DATA', 'internet.dta'),
+        name='data_prep_internet'
+    )
