@@ -16,6 +16,8 @@ from bld.project_paths import project_paths_join as ppj
 
 
 def save_data(sample):
+    """Save cleaned data as .dta file.
+    """
     sample.to_stata(ppj("OUT_DATA", "gdp.dta"))
 
 
