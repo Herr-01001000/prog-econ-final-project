@@ -15,6 +15,8 @@ log using `"${PATH_OUT_DATA}/log/`1'.log"', replace
 // Read in file names
 do `"${PATH_OUT_MODEL_SPECS}/file_names"'
 
+tempfile ${bankloan}
+
 global list ${bankloan}
 foreach name in $list {
 	import excel "${PATH_IN_DATA}/area_report_by_year.xlsx", ///
@@ -29,7 +31,7 @@ foreach name in $list {
 
 	sort state year
 
-	save "${PATH_OUT_DATA}/bankloan_`name'.dta", replace
+	save ``name'', replace
 }
 
 
@@ -38,9 +40,9 @@ clear
 local loan ${bankloan}
 gettoken first rest: loan, parse(" ")
 
-use "${PATH_OUT_DATA}/bankloan_`first'.dta"
+use ``first''
 foreach name of local rest {
-	merge 1:1 state year using "${PATH_OUT_DATA}/bankloan_`name'.dta"
+	merge 1:1 state year using ``name''
 	drop if _merge==2
 	drop _merge
 }
