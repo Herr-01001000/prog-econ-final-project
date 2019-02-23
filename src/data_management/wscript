@@ -5,6 +5,9 @@ import os
 
 def build(ctx):
 
+    def out_data(*args):
+        return ctx.path_to(ctx, 'OUT_DATA', *args)
+
     def out_models(*args):
         return ctx.path_to(ctx, 'OUT_MODEL_SPECS', *args)
 
@@ -62,6 +65,48 @@ def build(ctx):
         target=[
             ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_bankloan.log'),
             ctx.path_to(ctx, 'OUT_DATA', 'bankloan.dta')
+        ],
+    )
+
+    for year in ['2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']:
+        ctx(
+            features='subst',
+            source='data_prep_sod.do',
+            target='data_prep_sod_{}.do'.format(year)
+        )
+        ctx(
+            features='run_do_script',
+            source='data_prep_sod_{}.do'.format(year),
+            deps=[
+                ctx.path_to(ctx, 'IN_DATA', 'bank-data.csv'),
+                ctx.path_to(ctx, 'IN_DATA', 'ALL_{}.csv'.format(year))
+            ],
+            target=[
+                ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_sod_{}.log'.format(year)),
+                ctx.path_to(ctx, 'OUT_DATA', 'sod_{}.dta'.format(year))
+            ],
+            name='data_prep_sod_{}'.format(year),
+            append=year
+        )
+    ctx(
+        features='run_do_script',
+        source='data_prep_sod_append.do',
+        deps=[
+            out_data('sod_2007.dta'),
+            out_data('sod_2008.dta'),
+            out_data('sod_2009.dta'),
+            out_data('sod_2010.dta'),
+            out_data('sod_2011.dta'),
+            out_data('sod_2012.dta'),
+            out_data('sod_2013.dta'),
+            out_data('sod_2014.dta'),
+            out_data('sod_2015.dta'),
+            out_data('sod_2016.dta'),
+            out_data('sod_2017.dta')
+        ],
+        target=[
+            ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_sod_append.log'),
+            ctx.path_to(ctx, 'OUT_DATA', 'sod.dta')
         ],
     )
 
