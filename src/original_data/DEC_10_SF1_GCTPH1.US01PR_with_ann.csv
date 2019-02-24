@@ -1,0 +1,55 @@
+GEO.id,GEO.id2,GEO.display-label,GCT_STUB.target-geo-id,GCT_STUB.target-geo-id2,GCT_STUB.display-label,GCT_STUB.display-label,SUBHD0301,SUBHD0302,SUBHD0303,SUBHD0401
+Id,Id2,Geography,Target Geo Id,Target Geo Id2,Geographic area,Geographic area,Area in square miles - Total area,Area in square miles - Water area,Area in square miles - Land area,Density per square mile of land area - Population
+0100000US,,United States,0100000US,,United States,United States,3796742.23,264836.79,3531905.43,87.4
+0100000US,,United States,0400000US01,01,United States - Alabama,Alabama,52420.07,1774.74,50645.33,94.4
+0100000US,,United States,0400000US02,02,United States - Alaska,Alaska,665384.04,94743.10,570640.95,1.2
+0100000US,,United States,0400000US04,04,United States - Arizona,Arizona,113990.30,396.22,113594.08,56.3
+0100000US,,United States,0400000US05,05,United States - Arkansas,Arkansas,53178.55,1143.07,52035.48,56.0
+0100000US,,United States,0400000US06,06,United States - California,California,163694.74,7915.52,155779.22,239.1
+0100000US,,United States,0400000US08,08,United States - Colorado,Colorado,104093.67,451.78,103641.89,48.5
+0100000US,,United States,0400000US09,09,United States - Connecticut,Connecticut,5543.41,701.06,4842.36,738.1
+0100000US,,United States,0400000US10,10,United States - Delaware,Delaware,2488.72,540.18,1948.54,460.8
+0100000US,,United States,0400000US11,11,United States - District of Columbia,District of Columbia,68.34,7.29,61.05,9856.5
+0100000US,,United States,0400000US12,12,United States - Florida,Florida,65757.70,12132.94,53624.76,350.6
+0100000US,,United States,0400000US13,13,United States - Georgia,Georgia,59425.15,1911.67,57513.49,168.4
+0100000US,,United States,0400000US15,15,United States - Hawaii,Hawaii,10931.72,4509.09,6422.63,211.8
+0100000US,,United States,0400000US16,16,United States - Idaho,Idaho,83568.95,925.83,82643.12,19.0
+0100000US,,United States,0400000US17,17,United States - Illinois,Illinois,57913.55,2394.62,55518.93,231.1
+0100000US,,United States,0400000US18,18,United States - Indiana,Indiana,36419.55,593.44,35826.11,181.0
+0100000US,,United States,0400000US19,19,United States - Iowa,Iowa,56272.81,415.68,55857.13,54.5
+0100000US,,United States,0400000US20,20,United States - Kansas,Kansas,82278.36,519.64,81758.72,34.9
+0100000US,,United States,0400000US21,21,United States - Kentucky,Kentucky,40407.80,921.46,39486.34,109.9
+0100000US,,United States,0400000US22,22,United States - Louisiana,Louisiana,52378.13,9174.23,43203.90,104.9
+0100000US,,United States,0400000US23,23,United States - Maine,Maine,35379.74,4536.82,30842.92,43.1
+0100000US,,United States,0400000US24,24,United States - Maryland,Maryland,12405.93,2698.69,9707.24,594.8
+0100000US,,United States,0400000US25,25,United States - Massachusetts,Massachusetts,10554.39,2754.33,7800.06,839.4
+0100000US,,United States,0400000US26,26,United States - Michigan,Michigan,96713.51,40174.61,56538.90,174.8
+0100000US,,United States,0400000US27,27,United States - Minnesota,Minnesota,86935.83,7309.09,79626.74,66.6
+0100000US,,United States,0400000US28,28,United States - Mississippi,Mississippi,48431.78,1508.50,46923.27,63.2
+0100000US,,United States,0400000US29,29,United States - Missouri,Missouri,69706.99,965.47,68741.52,87.1
+0100000US,,United States,0400000US30,30,United States - Montana,Montana,147039.71,1493.91,145545.80,6.8
+0100000US,,United States,0400000US31,31,United States - Nebraska,Nebraska,77347.81,523.64,76824.17,23.8
+0100000US,,United States,0400000US32,32,United States - Nevada,Nevada,110571.82,790.65,109781.18,24.6
+0100000US,,United States,0400000US33,33,United States - New Hampshire,New Hampshire,9349.16,396.51,8952.65,147.0
+0100000US,,United States,0400000US34,34,United States - New Jersey,New Jersey,8722.58,1368.36,7354.22,1195.5
+0100000US,,United States,0400000US35,35,United States - New Mexico,New Mexico,121590.30,292.15,121298.15,17.0
+0100000US,,United States,0400000US36,36,United States - New York,New York,54554.98,7428.58,47126.40,411.2
+0100000US,,United States,0400000US37,37,United States - North Carolina,North Carolina,53819.16,5201.25,48617.91,196.1
+0100000US,,United States,0400000US38,38,United States - North Dakota,North Dakota,70698.32,1697.52,69000.80,9.7
+0100000US,,United States,0400000US39,39,United States - Ohio,Ohio,44825.58,3964.89,40860.69,282.3
+0100000US,,United States,0400000US40,40,United States - Oklahoma,Oklahoma,69898.87,1303.95,68594.92,54.7
+0100000US,,United States,0400000US41,41,United States - Oregon,Oregon,98378.54,2390.53,95988.01,39.9
+0100000US,,United States,0400000US42,42,United States - Pennsylvania,Pennsylvania,46054.34,1311.64,44742.70,283.9
+0100000US,,United States,0400000US44,44,United States - Rhode Island,Rhode Island,1544.89,511.07,1033.81,1018.1
+0100000US,,United States,0400000US45,45,United States - South Carolina,South Carolina,32020.49,1959.79,30060.70,153.9
+0100000US,,United States,0400000US46,46,United States - South Dakota,South Dakota,77115.68,1304.68,75811.00,10.7
+0100000US,,United States,0400000US47,47,United States - Tennessee,Tennessee,42144.25,909.36,41234.90,153.9
+0100000US,,United States,0400000US48,48,United States - Texas,Texas,268596.46,7364.75,261231.71,96.3
+0100000US,,United States,0400000US49,49,United States - Utah,Utah,84896.88,2727.26,82169.62,33.6
+0100000US,,United States,0400000US50,50,United States - Vermont,Vermont,9616.36,399.71,9216.66,67.9
+0100000US,,United States,0400000US51,51,United States - Virginia,Virginia,42774.93,3284.84,39490.09,202.6
+0100000US,,United States,0400000US53,53,United States - Washington,Washington,71297.95,4842.43,66455.52,101.2
+0100000US,,United States,0400000US54,54,United States - West Virginia,West Virginia,24230.04,191.83,24038.21,77.1
+0100000US,,United States,0400000US55,55,United States - Wisconsin,Wisconsin,65496.38,11338.57,54157.80,105.0
+0100000US,,United States,0400000US56,56,United States - Wyoming,Wyoming,97813.01,719.87,97093.14,5.8
+0100000US,,United States,0400000US72,72,United States - Puerto Rico,Puerto Rico,5324.84,1901.07,3423.78,1088.2

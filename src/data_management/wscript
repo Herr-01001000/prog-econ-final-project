@@ -142,3 +142,37 @@ def build(ctx):
         target=ctx.path_to(ctx, 'OUT_DATA', 'internet.dta'),
         name='data_prep_internet'
     )
+
+    ctx(
+        features='run_py_script',
+        source='data_prep_population.py',
+        deps=[
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2007.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2008.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2009.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2010.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2011.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2012.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2013.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2014.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2015.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2016.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'poverty2017.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'DEC_10_SF1_GCTPH1.US01PR_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2007_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2008_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2009_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2010_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2011_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2012_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2013_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2014_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2015_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2016_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_DATA', 'ACS_2017_1YR_S0601_with_ann.csv'),
+            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json'),
+            ctx.path_to(ctx, 'IN_MODEL_CODE', 'data_cleaner.py')
+        ],
+        target=ctx.path_to(ctx, 'OUT_DATA', 'population.dta'),
+        name='data_prep_population'
+    )
