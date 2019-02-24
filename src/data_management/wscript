@@ -176,3 +176,15 @@ def build(ctx):
         target=ctx.path_to(ctx, 'OUT_DATA', 'population.dta'),
         name='data_prep_population'
     )
+
+    ctx(
+        features='run_py_script',
+        source='data_prep_unemployment.py',
+        deps=[
+            ctx.path_to(ctx, 'IN_DATA', 'staadata.xlsx'),
+            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json'),
+            ctx.path_to(ctx, 'IN_MODEL_CODE', 'data_cleaner.py')
+        ],
+        target=ctx.path_to(ctx, 'OUT_DATA', 'unemployment.dta'),
+        name='data_prep_unemployment'
+    )
