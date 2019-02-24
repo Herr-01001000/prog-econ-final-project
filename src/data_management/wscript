@@ -188,3 +188,22 @@ def build(ctx):
         target=ctx.path_to(ctx, 'OUT_DATA', 'unemployment.dta'),
         name='data_prep_unemployment'
     )
+
+    ctx(
+        features='run_do_script',
+        source='data_prep_all.do',
+        deps=[
+            out_data('LoanStats_all.dta'),
+            out_data('sod.dta'),
+            out_data('gdp.dta'),
+            out_data('pi.dta'),
+            out_data('unemployment.dta'),
+            out_data('internet.dta'),
+            out_data('population.dta'),
+            out_data('bankloan.dta')
+        ],
+        target=[
+            ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_all.log'),
+            ctx.path_to(ctx, 'OUT_DATA', 'data_all.dta')
+        ],
+    )
