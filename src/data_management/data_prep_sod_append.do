@@ -17,11 +17,11 @@ forvalues year = 2008(1)2017 {
 rename stalpbr state
 
 sort zip_code year
-by zip_code: gen L_failure = failure[_n-1]
-by zip_code: gen L_hhi = hhi[_n-1]
+by zip_code: gen L1_failure = failure[_n-1]
+by zip_code: gen L1_hhi = hhi[_n-1]
 
 label variable failure "Number of bank failures"
-label variable L_hhi "First lag of HHI"
+label variable L1_hhi "First lag of HHI"
 
 
 save "${PATH_OUT_DATA}/sod.dta", replace

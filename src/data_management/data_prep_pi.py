@@ -58,6 +58,6 @@ if __name__ == "__main__":
                          '203.0': 'pi_pc'}, inplace=True)
     data['year'] = data['year'].astype(np.int) + 2000
     data['income'] = data['pi_pc'] / 1000
-    data['L_income'] = data[['income', 'state']].groupby('state').shift(1)
+    data['L1_income'] = data[['income', 'state']].groupby('state').shift(1)
 
     save_data(data)
