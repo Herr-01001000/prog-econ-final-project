@@ -3,6 +3,12 @@
 
 def build(ctx):
 
+    def out_data(*args):
+        return ctx.path_to(ctx, 'OUT_DATA', *args)
+
+    def out_models(*args):
+        return ctx.path_to(ctx, 'OUT_MODEL_SPECS', *args)
+
     for model in 'baseline', 'max_moves_2':
 
         # Illustrate use of run_py_script with automatic model specification.
@@ -21,3 +27,16 @@ def build(ctx):
             append=model,
             name='schelling_{}'.format(model)
         )
+
+    ctx(
+        features='run_do_script',
+        source='reg1_panel.do',
+        deps=[
+            out_data('data_all.dta'),
+            out_models('reg1_panel.do')
+        ],
+        target=[
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'log', 'reg1_panel.log'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'reg1_panel.tex')
+        ],
+    )
