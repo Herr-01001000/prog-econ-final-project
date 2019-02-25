@@ -28,15 +28,17 @@ def build(ctx):
             name='schelling_{}'.format(model)
         )
 
-    ctx(
-        features='run_do_script',
-        source='reg1_panel.do',
-        deps=[
-            out_data('data_all.dta'),
-            out_models('reg1_panel.do')
-        ],
-        target=[
-            ctx.path_to(ctx, 'OUT_ANALYSIS', 'log', 'reg1_panel.log'),
-            ctx.path_to(ctx, 'OUT_ANALYSIS', 'reg1_panel.tex')
-        ],
-    )
+    for model in 'reg1_panel', 'reg2_compare', 'reg3_robustness':
+
+        ctx(
+            features='run_do_script',
+            source='{}.do'.format(model),
+            deps=[
+                out_data('data_all.dta'),
+                out_models('{}.do'.format(model))
+            ],
+            target=[
+                ctx.path_to(ctx, 'OUT_ANALYSIS', 'log', '{}.log'.format(model)),
+                ctx.path_to(ctx, 'OUT_ANALYSIS', '{}.tex'.format(model))
+            ],
+        )

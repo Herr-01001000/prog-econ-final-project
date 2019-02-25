@@ -1,0 +1,6 @@
+{
+    "DEPVAR": "log_loan_amnt log_bank_loan loan_diff log_bank_loan_c loan_c_diff",
+    "EXPVAR": "failure hhi internet income unemployment bachelor young poverty",
+    "FE": "year state_id",
+    "VCE": "county_id"
+}
