@@ -38,7 +38,7 @@ foreach expvar in lagEXPVAR intEXPVAR {
 	}
 }
 esttab est* using "${PATH_OUT_ANALYSIS}/`1'.tex", booktabs ///
-	prehead("\toprule" "Dep. variable: &\multicolumn{4}{c}{FinTech Lending} \\") ///
+	prehead("\tabularnewline\hline" "Dep. variable: &\multicolumn{4}{c}{FinTech Lending} \\") ///
 	postfoot("\bottomrule")  ///
 	unstack cells(b(star fmt(4)) p(par fmt(4))) ///
 	mtitles("volume" "number" "volume" "number") numbers ///

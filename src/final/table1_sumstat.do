@@ -25,5 +25,5 @@ eststo: qui estpost summarize loan_amnt log_loan_amnt loan_no log_loan_no ///
 esttab est* using "${PATH_OUT_TABLES}/`1'.tex", booktabs ///
 	unstack cells("mean(fmt(2)) sd(fmt(2)) min(fmt(2)) max(fmt(2)) count(fmt(2))") ///
 	replace style(tex) drop() noobs nonumbers nodepvars nomtitles ///
-	prehead("\toprule") postfoot("\bottomrule") noomitted varwidth(25)
+	prehead("\tabularnewline\hline") postfoot("\bottomrule") noomitted varwidth(25)
 
