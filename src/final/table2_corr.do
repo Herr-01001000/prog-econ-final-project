@@ -2,7 +2,8 @@
 The file "table2_corr.do" creates table 2 with the correlation matrix
 of the main indicators (log_loan_amnt log_loan_no log_bank_loan
 log_bank_loan_c failure hhi internet income unemployment bachelor young poverty) 
-from the corresponding dta-file in the data directory "data_all.do".
+from the corresponding dta-file in the data directory "data_all.dta". 
+It writes the results to LaTeX file "table2_corr.tex".
 */
 
 
@@ -12,7 +13,7 @@ log using `"${PATH_OUT_TABLES}/log/`1'.log"', replace
 graph set window fontface "Times New Roman"
 
 
-// Import data
+// Import Data
 use "${PATH_OUT_DATA}/data_all.dta"
 
 
