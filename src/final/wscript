@@ -3,6 +3,15 @@
 
 def build(ctx):
 
+    def out_data(*args):
+        return ctx.path_to(ctx, 'OUT_DATA', *args)
+
+    def out_figures(*args):
+        return ctx.path_to(ctx, 'OUT_FIGURES', *args)
+
+    def out_tables(*args):
+        return ctx.path_to(ctx, 'OUT_TABLES', *args)
+
     for model in 'baseline', 'max_moves_2':
 
         ctx(
@@ -17,7 +26,17 @@ def build(ctx):
             name='plot_locations_{}'.format(model)
         )
 
-
+    ctx(
+        features='run_do_script',
+        source='table1_sumstat.do',
+        deps=[
+            out_data('data_all.dta')
+        ],
+        target=[
+            out_tables('log', 'table1_sumstat.log'),
+            out_tables('table1_sumstat.tex')
+        ],
+    )
     # from src.final.project_dependency_graph import make_project_dependency_graph
 
     # ctx.add_post_fun(make_project_dependency_graph)
