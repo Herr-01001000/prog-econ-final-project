@@ -24,7 +24,7 @@ twoway (bar loan_amnt_b year, barwidth(0.5) color(gs13)) ///
 	ytitle("Loan Amount(Billions)") caption("Data Source: Lending Club", size(small)) ///
 	legend(label(1 "Bar Graph") label(2 "Line Graph") order(1 2) ring(0) pos(10) ///
 	cols(1) region(lwidth(none))) scheme(s1color) graphregion(margin(tiny))	
-graph export "${PATH_OUT_FIGURES}/figure2_lc_volume.eps", replace
+graph export "${PATH_OUT_FIGURES}/`1'_volume.eps", replace
 
 twoway (bar loan_no year, barwidth(0.5) color(gs13)) ///
 	(line loan_no year, clcolor(red) clwidth(thick)), ///
@@ -33,4 +33,4 @@ twoway (bar loan_no year, barwidth(0.5) color(gs13)) ///
 	ytitle("Number of Loans") caption("Data Source: Lending Club", size(small)) ///
 	legend(label(1 "Bar Graph") label(2 "Line Graph") order(1 2) ring(0) pos(10) ///
 	cols(1) region(lwidth(none))) scheme(s1color) graphregion(margin(tiny))	
-graph export "${PATH_OUT_FIGURES}/figure2_lc_number.eps", replace
+graph export "${PATH_OUT_FIGURES}/`1'_number.eps", replace

@@ -23,4 +23,4 @@ twoway (bar failure year, barwidth(0.5) color(gs13)) ///
 	ytitle("Bank Failures") caption("Data Source: Summary of Deposits", size(small)) ///
 	legend(label(1 "Bar Graph") label(2 "Line Graph") order(1 2) ring(0) pos(2) ///
 	cols(1) region(lwidth(none))) scheme(s1color) graphregion(margin(tiny))	
-graph export "${PATH_OUT_FIGURES}/figure5_failure.eps", replace
+graph export "${PATH_OUT_FIGURES}/`1'.eps", replace
