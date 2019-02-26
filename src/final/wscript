@@ -40,6 +40,46 @@ def build(ctx):
             ],
         )
 
+    ctx(
+        features='run_do_script',
+        source='figure1_margin.do',
+        deps=[
+            out_data('data_all.dta')
+        ],
+        target=[
+            out_figures('log', 'figure1_margin.log'),
+            out_figures('figure1_margin_failure.eps'),
+            out_figures('figure1_margin_hhi.eps')
+        ],
+    )
+
+    ctx(
+        features='run_do_script',
+        source='figure2_lc.do',
+        deps=[
+            out_data('data_collapse.dta')
+        ],
+        target=[
+            out_figures('log', 'figure2_lc.log'),
+            out_figures('figure2_lc_volume.eps'),
+            out_figures('figure2_lc_number.eps')
+        ],
+    )
+
+    # for figure in 'figure3_tradition', 'figure4_hhi', 'figure5_failure':
+
+    #     ctx(
+    #         features='run_do_script',
+    #         source='{}.do'.format(figure),
+    #         deps=[
+    #             out_data('data_all.dta')
+    #         ],
+    #         target=[
+    #             out_figures('log', '{}.log').format(figure),
+    #             out_figures('{}.eps'.format(figure))
+    #         ],
+    #     )
+
     # from src.final.project_dependency_graph import make_project_dependency_graph
 
     # ctx.add_post_fun(make_project_dependency_graph)
