@@ -204,6 +204,7 @@ def build(ctx):
         ],
         target=[
             ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_all.log'),
-            ctx.path_to(ctx, 'OUT_DATA', 'data_all.dta')
+            ctx.path_to(ctx, 'OUT_DATA', 'data_all.dta'),
+            ctx.path_to(ctx, 'OUT_DATA', 'data_collapse.dta')
         ],
     )

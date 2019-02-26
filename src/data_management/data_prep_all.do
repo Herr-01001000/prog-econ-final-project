@@ -1,6 +1,6 @@
 /* 
 The file "data_prep_all.do" convertes all processed data to one final data file
-for further analysis.
+and one collapsed data file for further analysis.
 */
 
 
@@ -106,4 +106,15 @@ order zip_code county_id state state_id year
 sort county_id state year
 
 save "${PATH_OUT_DATA}/data_all.dta", replace
+
+collapse (sum) loan_amnt loan_no bank_loan (mean) hhi failure, by(county_id year)
+collapse (count) county_no = county_id (sum) loan_amnt loan_no bank_loan ///
+	(mean) hhi failure, by(year)
+gen loan_amnt_b = loan_amnt / 1000000000
+gen bank_loan_b = bank_loan / 1000000000
+label variable loan_amnt_b "Volume of the loan(billion dollars)"
+label variable bank_loan_b "Volume Traditional banking loan(billion dollars)"
+
+save "${PATH_OUT_DATA}/data_collapse.dta", replace
+
 log close
