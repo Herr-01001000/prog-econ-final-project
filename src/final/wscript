@@ -66,19 +66,19 @@ def build(ctx):
         ],
     )
 
-    # for figure in 'figure3_tradition', 'figure4_hhi', 'figure5_failure':
+    for figure in 'figure3_tradition', 'figure4_hhi', 'figure5_failure':
 
-    #     ctx(
-    #         features='run_do_script',
-    #         source='{}.do'.format(figure),
-    #         deps=[
-    #             out_data('data_all.dta')
-    #         ],
-    #         target=[
-    #             out_figures('log', '{}.log').format(figure),
-    #             out_figures('{}.eps'.format(figure))
-    #         ],
-    #     )
+        ctx(
+            features='run_do_script',
+            source='{}.do'.format(figure),
+            deps=[
+                out_data('data_collapse.dta')
+            ],
+            target=[
+                out_figures('log', '{}.log').format(figure),
+                out_figures('{}.eps'.format(figure))
+            ],
+        )
 
     # from src.final.project_dependency_graph import make_project_dependency_graph
 
