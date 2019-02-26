@@ -9,6 +9,9 @@ def build(ctx):
     def out_models(*args):
         return ctx.path_to(ctx, 'OUT_MODEL_SPECS', *args)
 
+    def out_analysis(*args):
+        return ctx.path_to(ctx, 'OUT_ANALYSIS', *args)
+
     for model in 'baseline', 'max_moves_2':
 
         # Illustrate use of run_py_script with automatic model specification.
@@ -38,7 +41,7 @@ def build(ctx):
                 out_models('{}.do'.format(model))
             ],
             target=[
-                ctx.path_to(ctx, 'OUT_ANALYSIS', 'log', '{}.log'.format(model)),
-                ctx.path_to(ctx, 'OUT_ANALYSIS', '{}.tex'.format(model))
+                out_analysis('log', '{}.log'.format(model)),
+                out_analysis('{}.tex'.format(model))
             ],
         )

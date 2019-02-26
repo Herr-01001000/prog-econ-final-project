@@ -34,8 +34,8 @@ foreach depvar in $depvars {
 	eststo: qui reghdfe `depvar' ${EXPVAR}, absorb(${FE}) vce(cluster ${VCE})
 }
 esttab est* using "${PATH_OUT_ANALYSIS}/`1'.tex", booktabs ///
-	prehead("toprule" "Dep. variable: &\multicolumn{5}{c}{Lending Volume} \\") ///
-	postfoot("bottomrule") ///
+	prehead("\toprule" "Dep. variable: &\multicolumn{5}{c}{Lending Volume} \\") ///
+	postfoot("\bottomrule") ///
 	unstack cells(b(star fmt(4)) p(par fmt(4))) ///
 	mtitles("FinTech" "Banking" "Total Diff" "Credit Banking" "Credit Diff") ///
 	numbers collabels(none) varlabels(_cons Constant) ///
