@@ -8,6 +8,8 @@
 \usepackage{fancyvrb, moreverb, relsize}
 \usepackage{eurosym, calc}
 \usepackage{amsmath, amssymb, amsfonts, amsthm, bm} 
+\usepackage{caption}
+\usepackage{subfigure}
 
 
 
@@ -20,6 +22,7 @@
 \setbeamertemplate{footline}[frame number]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{frametitle}{\centering\vspace{1ex}\insertframetitle\par}
+\usefonttheme[onlylarge]{structuresmallcapsserif}
 
 
 \begin{document}
@@ -39,7 +42,269 @@
 \end{frame}
 
 
-\begin{frame}[t]
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\section{Introduction}
+
+\begin{frame}{Introduction}
+    Expansion of FinTech Lending vs Traditional Banking
+    \begin{figure}
+        \centering
+            \subfigure[Volumne]
+             {\includegraphics[scale=0.35]{../../out/figures/figure2_lc_volume.eps}}
+            \subfigure[Number]
+             {\includegraphics[scale=0.35]{../../out/figures/figure2_lc_number.eps}}
+        \caption{Lending Club loan volume and number development}
+        \vspace{0.1cm}
+        \hspace{0.25cm} \parbox{10cm}{\scriptsize The first panel illustrates the Lending Club loan volume growth (in billions of dollars) over the period 2007 to 2017. The second panel shows the respective quantity growth. Source: Lending Club.}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Introduction}
+    Identification Strategy
+    \begin{itemize}
+        \item Exploration of the geographic heterogeneity
+        \item Panel data at "county" level, 2007-2017
+        \item Fixed effect
+    \end{itemize}
+\end{frame}
+
+
+\section{Hypotheses}
+
+\begin{frame}{Hypotheses}
+    Hypotheses in four aspects:
+    \begin{enumerate}
+        \item Financial crisis
+        \item Market structure
+        \item Technology
+        \item Demographics
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Hypotheses}
+    (1) Financial Crisis
+
+    FinTech lending expanded faster in markets that were more affected by the Global Financial Crisis(+). 
+
+    Measure: bank failure
+
+    \begin{figure}
+        \includegraphics[scale=0.5]{../../out/figures/figure5_failure.eps}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Hypotheses}
+    (2) Market structure (traditional banks)
+
+    Fintech lending expanded faster in areas with low market concentration, which implies high market competition(-).
+
+    Measure: Herfindahl-Hirschman-Index(HHI)
+
+    \begin{figure}
+        \includegraphics[scale=0.5]{../../out/figures/figure4_hhi.eps}
+    \end{figure}
+\end{frame}
+
+
+
+\begin{frame}{Hypotheses}
+    (3) Technology
+
+    Fintech lending expanded faster where people have easier accesses to Internet. 
+
+    Measure: Internet penetration
+\end{frame}
+
+
+\begin{frame}{Hypotheses}
+    (4) Demographics
+
+    The expansion of the fintech lending is faster in areas with more educated, young population, higher unemployment rate and lower personal income. 
+
+    Measure: multiple social economic factors
+\end{frame}
+
+
+\section{Data}
+
+\begin{frame}{Data}
+    Dependent Variables
+    \begin{tabular}{|p{4cm}|p{6cm}|}
+        \hline
+        \textbf{Variable} & \textbf{Definition and data source}  \\ 
+        \hline
+        Fintech Lending (volume) & Logarithm of loan volume from Lending Club at county level(dollars).   \\
+        log(loan\_amnt) & Source: Lending Club   \\ 
+        \hline
+        Fintech Lending (number)  & Logarithm of the number of loans from Lending Club at county level.    \\
+        log(loan\_no) & Source: Lending Club   \\
+        \hline
+        Traditional Banking Loan (Total) & Logarithm of total household debt balance in traditional banking (dollars).     \\ 
+        log(bank\_loan) & Source: FRBNY Consumer Credit Panel / Equifax   \\ 
+        \hline
+        Traditional Banking Loan (Credit Card) & Logarithm of credit card debt balance in traditional banking (dollars).    \\ 
+        log(bank\_loan) & Source: FRBNY Consumer Credit Panel / Equifax   \\ 
+        \hline
+    \end{tabular}
+\end{frame}
+
+
+\begin{frame}{Data}
+    Independent Variables
+    \centering
+    \scalebox{0.7}{
+    \begin{tabular}{|p{3cm}|p{7cm}|p{2cm}|}
+        \hline
+        \textbf{Variable} & \textbf{Definition and data source} & \textbf{Expected sign} \\ 
+        \hline
+        \multicolumn{3}{|l|}{\textbf{Financial crisis}} \\ \hline
+        failure & Number of bank failures at county level. Source: Summary of Deposits.&  + \\ \hline
+        \multicolumn{3}{|l|}{\textbf{Market Structure}} \\ \hline
+        hhi & HHI for market concentration at county level. Source: Summary of Deposits.&  - \\ \hline
+        \multicolumn{3}{|l|}{\textbf{Technology}} \\ \hline
+        internet & Uses the Internet. Source: NTIA. &  + \\ \hline
+        \multicolumn{3}{|l|}{\textbf{Socio-economic Demographics}} \\ \hline
+        income & Per capita personal income(thousand of dollars). Source: DepaU.S. Bureau of Economic Analysis. &  ? \\ \hline
+        unemployment & Unemployment rate(\%). Source: Bureau of Labor Statistics.&  + \\ \hline
+        bachelor & Propotion of the population with bachelor degree(\%). Source: US Census Bureau.&  + \\ \hline
+        young & Propotion of young population(age between 18 and 24)(\%). Source: US Census Bureau. &  + \\ \hline
+        poverty & Proportion of population below poverty level. Source: US Census Bureau. & ? \\\hline
+    \end{tabular}}
+\end{frame}
+
+
+\begin{frame}{Data}
+    Summary Statistics
+    \begin{center}
+    \scalebox{0.8}{
+    \begin{tabular}{l c c c c c}
+        \input{../../out/tables/table1_sumstat.tex}
+    \end{tabular}}
+    \end{center}
+\end{frame}
+
+
+\section{Analysis}
+
+\subsection{Drivers of FinTech Lending}
+
+\begin{frame}{Drivers of FinTech Lending}
+    Regression Model:
+    \begin{small}
+        \input{formulas/reg1_panel}
+    \end{small}
+\end{frame}
+
+
+\begin{frame}{Regression Result}
+    \centering
+    \scalebox{0.6}{
+    \begin{tabular}{l c c c c}
+        \input{../../out/analysis/reg1_panel.tex}
+    \end{tabular}}
+\end{frame}
+
+
+\subsection{FinTech Lending vs Traditional Lending}
+
+\begin{frame}{FinTech Lending vs Traditional Lending}
+    Regression Model:
+    \begin{tiny}
+        \input{formulas/reg2_compare}
+    \end{tiny}
+\end{frame}
+
+
+\begin{frame}{Regression Result}
+    \centering
+    \scalebox{0.6}{
+    \begin{tabular}{l c c c c c}
+        \input{../../out/analysis/reg2_compare.tex}
+    \end{tabular}}
+\end{frame}
+
+
+\subsection{Robustness Analysis}
+
+\begin{frame}{Robustness Analysis I}
+    Regression Model:
+    \begin{scriptsize}
+        \input{formulas/reg3_robust_lag}
+    \end{scriptsize}
+\end{frame}
+
+
+\begin{frame}{Regression Result}
+    \centering
+    \scalebox{0.35}{
+    \begin{tabular}{l c c c c}
+        \input{../../out/analysis/reg3_robustness.tex}
+    \end{tabular}}
+\end{frame}
+
+
+\begin{frame}{Robustness Analysis II}
+    Regression Model:
+    \begin{footnotesize}
+        \input{formulas/reg3_robust_interaction}
+    \end{footnotesize}
+\end{frame}
+
+
+\begin{frame}{Regression Result}
+    \centering
+    \scalebox{0.35}{
+    \begin{tabular}{l c c c c}
+        \input{../../out/analysis/reg3_robustness.tex}
+    \end{tabular}}
+\end{frame}
+
+
+\begin{frame}{Marginal Plots}
+    \begin{figure}
+        \centering
+            \subfigure[Cond. marginal effect of bank failures on log(loan amount)]
+             {\includegraphics[scale=0.35]{../../out/figures/figure1_margin_failure.eps}}
+            \subfigure[Cond. marginal effect of HHI on log(loan amount)]
+             {\includegraphics[scale=0.35]{../../out/figures/figure1_margin_hhi.eps}}
+        \caption{Conditional marginal effects of Bank Failures and HHI}
+        \vspace{0.1cm}
+        \hspace{0.25cm} \parbox{10cm}{\scriptsize The estimated regression model is Equation 4. The dashed lines represent the mean minus standard
+        deviation, mean, and mean plus standard deviation of the x-variable.}
+    \end{figure}
+\end{frame}
+
+
+\section{Summary and Conclusion}
+
+\begin{frame}{Summary and Conclusion}
+    \begin{itemize}
+        \item FinTech lending has been spurred by the financial crisis
+        \item Entry of FinTech lending is constrained by the high market concentration
+        \item States with higher share of young population and higher unemployment rate experience higher growth of FinTech lending
+        \item Past technology may require some time to affect future FinTech lending positively
+        \item The marginal effect of market structure on FinTech lending depends on financial crisis
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}
     \frametitle{heading here}
     \begin{itemize}
         \item<+-> Please cite this template as: \citet{GaudeckerEconProjectTemplates}
