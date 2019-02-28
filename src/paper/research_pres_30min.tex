@@ -14,7 +14,8 @@
 
 
 \usepackage{natbib}
-\bibliographystyle{rusnat}
+%\bibliographystyle{rusnat}
+\bibliographystyle{elsarticle-harv}
 
 
 \hypersetup{colorlinks=true, linkcolor=black, anchorcolor=black, citecolor=black, filecolor=black, menucolor=black, runcolor=black, urlcolor=black}
@@ -298,23 +299,6 @@
 \end{frame}
 
 
-
-
-
-
-
-
-\begin{frame}
-    \frametitle{heading here}
-    \begin{itemize}
-        \item<+-> Please cite this template as: \citet{GaudeckerEconProjectTemplates}
-        \item<+-> \citet{Schelling69} example in the code is taken from \citet{StachurskiSargent13}.
-        \item<+-> The decision rule of an agent is \input{formulas/decision_rule}
-    \end{itemize}
-    \note{~}
-\end{frame}
-
-
 % Print black screen only in presentation mode for finishing up.
 \mode<beamer> {
     \beamersetaveragebackground{black}
@@ -327,7 +311,7 @@
 
 \begin{frame}[allowframebreaks]
     \frametitle{References}
-    
+    \nocite{*}
     
     \bibliography{refs}
     
