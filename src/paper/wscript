@@ -3,7 +3,7 @@
 
 def build(ctx):
 
-    for s in 'research_paper', 'research_pres_30min':
+    for s in 'research_paper', 'research_presentation':
         ctx(
             features='tex',
             source=s + '.tex',
