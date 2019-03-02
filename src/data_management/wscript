@@ -11,13 +11,6 @@ def build(ctx):
     def out_models(*args):
         return ctx.path_to(ctx, 'OUT_MODEL_SPECS', *args)
 
-    ctx(
-        features='run_py_script',
-        source='get_simulation_draws.py',
-        target=ctx.path_to(ctx, 'OUT_DATA', 'initial_locations.csv'),
-        name='get_simulation_draws'
-    )
-
     abspath = os.path.join(ctx.path.abspath(), 'test_cleaner.py')
     ctx(
         features='run_py_script',
