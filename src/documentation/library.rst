@@ -7,4 +7,4 @@ Code library
 
 The directory *src.library* provides code that may be used by different steps of the analysis. Little code snippets for input / output or stuff that is not directly related to the model would go here.
 
-The distinction from the :ref:`model_code` directory is a bit arbitrary, but I have found it useful in the past. 
+Here I put multiple important Stata extensions, like *ftools*, *esttab*, *reghdfe*, for the analysis and final phase of this project.
