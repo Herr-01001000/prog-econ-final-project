@@ -5,7 +5,7 @@ Research paper / presentations
 ******************************
 
 
-Purpose of the different files (rename them to your liking):
+Purpose of the different files:
 
     * :file:`research_paper.tex` contains the actual paper.
     * :file:`research_presentation.tex` contains a typical conference presentation.

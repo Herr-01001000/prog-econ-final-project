@@ -5,11 +5,9 @@
 Introduction
 ************
 
-This is my research model about drivers of FinTech lending. I use the data from Lending Club and other data sources to explore the empirical evidence of potential FinTech lending drivers by econometric method. This model is accomplished by two major programming languages, Python and Stata. The entire research process is built on the Waf template from Professor Hans-Martin von Gaudecker.
+This is my research model about drivers of FinTech lending. I use the data from Lending Club and other data sources to explore the empirical evidence of potential FinTech lending drivers by econometric method. This model is accomplished by two major programming languages, Python and Stata. The entire research process is built on the Waf template from Professor Hans-Martin von Gaudecker :cite:`GaudeckerEconProjectTemplates`.
 
 Documentation on the rationale, Waf, and more background is at http://hmgaudecker.github.io/econ-project-templates/
-
-The Python version of the template uses a modified version of Stachurski's and Sargent's code accompanying their Online Course :cite:`StachurskiSargent13` for Schelling's (1969, :cite:`Schelling69`) segregation model as the running exmaple.
 
 
 .. _getting_started:
