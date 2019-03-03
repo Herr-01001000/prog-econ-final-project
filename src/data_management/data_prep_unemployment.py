@@ -1,5 +1,5 @@
-"""The file "data_prep_unemployment.py" leans the data from staadata.xlsx.
-It prepares internet use data for further analysis..
+"""The file "data_prep_unemployment.py" cleans the data from staadata.xlsx.
+It prepares internet use data for further analysis.
 
 Data source: Bureau of Labor Statistics, https://www.bls.gov/lau/rdscnp16.htm
 
@@ -15,8 +15,7 @@ from src.model_code.data_cleaner import data_cleaner, lag_generator
 
 
 def save_data(sample):
-    """Save cleaned data as .dta file.
-    """
+    """Save cleaned data as .dta file."""
     sample.to_stata(ppj("OUT_DATA", "unemployment.dta"))
 
 

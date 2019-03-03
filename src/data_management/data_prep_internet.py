@@ -17,17 +17,18 @@ from src.model_code.data_cleaner import lag_generator
 
 
 def save_data(sample):
-    """Save cleaned data as .dta file.
-    """
+    """Save cleaned data as .dta file."""
     sample.to_stata(ppj("OUT_DATA", "internet.dta"))
 
 
 def finder(list):
     """Find a specific pattern in a list by regular expression.
+
     Args:
-        list (list): the list where the function searches
+    list (list): the list where the function searches
+
     Returns:
-        container (list)
+    container (list)
     """
     container = []
     for string in list:
@@ -40,14 +41,16 @@ def finder(list):
 
 def add_year(data, years):
     """Add missing year observations to data.
+
     Arg:
-        data (pd.DataFrame): dataset with missing year observations
-        years (list): list of missing years(int)
+    data (pd.DataFrame): dataset with missing year observations
+    years (list): list of missing years(int)
+
     Returns:
-        data (pd.DataFrame)
+    data (pd.DataFrame)
     """
     for t in years:
-        df = data.loc[data.year.isin([t-1, t+1])].mean().to_frame().T
+        df = data.loc[data.year.isin([t - 1, t + 1])].mean().to_frame().T
         data = data.append(df, ignore_index=True)
 
     data = data.sort_values('year')

@@ -15,8 +15,7 @@ from src.model_code.data_cleaner import data_cleaner, lag_generator
 
 
 def save_data(sample):
-    """Save cleaned data as .dta file.
-    """
+    """Save cleaned data as .dta file."""
     sample.to_stata(ppj("OUT_DATA", "population.dta"))
 
 
