@@ -52,7 +52,19 @@ def build(ctx):
         ],
     )
 
-    for figure in 'figure3_tradition', 'figure4_hhi', 'figure5_failure':
+    ctx(
+        features='run_do_script',
+        source='figure3_tradition.do',
+        deps=[
+            out_data('bankloan.dta')
+        ],
+        target=[
+            out_figures('log', 'figure3_tradition.log'),
+            out_figures('figure3_tradition.eps')
+        ],
+    )
+
+    for figure in 'figure4_hhi', 'figure5_failure':
 
         ctx(
             features='run_do_script',
