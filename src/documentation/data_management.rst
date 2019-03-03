@@ -33,6 +33,14 @@ Lending Club loan data preparation
     :end-before: */
 
 
+Lending Club loan data combination
+=============================================================
+
+.. include:: ../data_management/data_prep_lc_append.do
+    :start-after: /*
+    :end-before: */
+
+
 SOD data preparation
 =============================================================
 
