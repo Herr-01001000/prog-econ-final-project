@@ -22,28 +22,47 @@ def build(ctx):
         append=abspath
     )
 
+    for name in ['3a', '3b', '3c', '3d', '_2016Q1', '_2016Q2', '_2016Q3', '_2016Q4', '_2017Q1', '_2017Q2', '_2017Q3', '_2017Q4', '_2018Q1', '_2018Q2']:
+        ctx(
+            features='subst',
+            source='data_prep_lc.do',
+            target='data_prep_lc_{}.do'.format(name)
+        )
+        ctx(
+            features='run_do_script',
+            source='data_prep_lc_{}.do'.format(name),
+            deps=[
+                ctx.path_to(ctx, 'IN_DATA', 'LoanStats{}.csv'.format(name))
+            ],
+            target=[
+                ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_lc_{}.log'.format(name)),
+                ctx.path_to(ctx, 'OUT_DATA', 'LoanStats{}.dta'.format(name))
+            ],
+            name='data_prep_lc_{}'.format(name),
+            append=name
+        )
     ctx(
         features='run_do_script',
-        source='data_prep_lc.do',
+        source='data_prep_lc_append.do',
         deps=[
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats3a.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats3b.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats3c.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats3d.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2016Q1.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2016Q2.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2016Q3.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2016Q4.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2017Q1.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2017Q2.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2017Q3.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2017Q4.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2018Q1.csv'),
-            ctx.path_to(ctx, 'IN_DATA', 'LoanStats_2018Q2.csv'),
+            out_data('LoanStats3a.dta'),
+            out_data('LoanStats3b.dta'),
+            out_data('LoanStats3c.dta'),
+            out_data('LoanStats3d.dta'),
+            out_data('LoanStats_2016Q1.dta'),
+            out_data('LoanStats_2016Q2.dta'),
+            out_data('LoanStats_2016Q3.dta'),
+            out_data('LoanStats_2016Q4.dta'),
+            out_data('LoanStats_2017Q1.dta'),
+            out_data('LoanStats_2017Q2.dta'),
+            out_data('LoanStats_2017Q3.dta'),
+            out_data('LoanStats_2017Q4.dta'),
+            out_data('LoanStats_2018Q1.dta'),
+            out_data('LoanStats_2018Q2.dta'),
             out_models('file_names.do')
         ],
         target=[
-            ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_lc.log'),
+            ctx.path_to(ctx, 'OUT_DATA', 'log', 'data_prep_lc_append.log'),
             ctx.path_to(ctx, 'OUT_DATA', 'LoanStats_all.dta')
         ],
     )

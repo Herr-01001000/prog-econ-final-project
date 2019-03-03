@@ -9,15 +9,7 @@ clear
 include project_paths
 log using `"${PATH_OUT_DATA}/log/`1'.log"', replace
 
-
-// Clean lending club data to state-year level. 
 use "${PATH_OUT_DATA}/LoanStats_all.dta"
-keep loan_amnt funded_amnt funded_amnt issue_d addr_state year zip_code
-gen id = _n
-
-collapse (count) loan_no=id (sum) loan_amnt , by(zip_code year addr_state)
-egen county_id = group(zip_code)
-rename addr_state state
 
 
 // Add bank failures and HHI to lending club data.
@@ -108,8 +100,8 @@ sort county_id state year
 save "${PATH_OUT_DATA}/data_all.dta", replace
 
 collapse (sum) loan_amnt loan_no bank_loan (mean) hhi failure, by(county_id year)
-collapse (count) county_no = county_id (sum) loan_amnt loan_no bank_loan ///
-	(mean) hhi failure, by(year)
+collapse (count) county_no = county_id (sum) loan_amnt loan_no ///
+	(mean) bank_loan hhi failure, by(year)
 gen loan_amnt_b = loan_amnt / 1000000000
 gen bank_loan_b = bank_loan / 1000000000
 label variable loan_amnt_b "Volume of the loan(billion dollars)"
