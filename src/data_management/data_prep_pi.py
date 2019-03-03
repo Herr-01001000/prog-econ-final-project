@@ -13,11 +13,11 @@ import pandas as pd
 import json
 
 from bld.project_paths import project_paths_join as ppj
+from src.model_code.data_cleaner import data_cleaner, lag_generator
 
 
 def save_data(sample):
-    """Save cleaned data as .dta file.
-    """
+    """Save cleaned data as .dta file."""
     sample.to_stata(ppj("OUT_DATA", "pi.dta"))
 
 
@@ -33,15 +33,7 @@ if __name__ == "__main__":
                        'IndustryClassification', 'Description'], inplace=True)
     data.dropna(inplace=True)
 
-    areas = data['GeoName'].unique().tolist()
-    for area in areas[:]:
-        if area in state_names['excluded_area']:
-            areas.remove(area)
-    data = data[data.GeoName.isin(areas)]
-
-    data.replace(state_names, inplace=True)
-    data.replace(r'Alaska*', 'AK', inplace=True)
-    data.replace(r'Hawaii*', 'HI', inplace=True)
+    data = data_cleaner(data, 'GeoName', state_names)
 
     data = pd.wide_to_long(data,
                            ['20'],
@@ -58,6 +50,6 @@ if __name__ == "__main__":
                          '203.0': 'pi_pc'}, inplace=True)
     data['year'] = data['year'].astype(np.int) + 2000
     data['income'] = data['pi_pc'] / 1000
-    data['L1_income'] = data[['income', 'state']].groupby('state').shift(1)
+    data = lag_generator(data, 'income', 'year', 'state')
 
     save_data(data)

@@ -127,7 +127,8 @@ def build(ctx):
         source='data_prep_gdp.py',
         deps=[
             ctx.path_to(ctx, 'IN_DATA', 'SAGDP2N__ALL_AREAS_1997_2017.csv'),
-            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json')
+            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json'),
+            ctx.path_to(ctx, 'IN_MODEL_CODE', 'data_cleaner.py')
         ],
         target=ctx.path_to(ctx, 'OUT_DATA', 'gdp.dta'),
         name='data_prep_gdp'
@@ -138,7 +139,8 @@ def build(ctx):
         source='data_prep_pi.py',
         deps=[
             ctx.path_to(ctx, 'IN_DATA', 'SAINC1_1998_2017_ALL_AREAS.csv'),
-            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json')
+            ctx.path_to(ctx, 'IN_MODEL_SPECS', 'state_names.json'),
+            ctx.path_to(ctx, 'IN_MODEL_CODE', 'data_cleaner.py')
         ],
         target=ctx.path_to(ctx, 'OUT_DATA', 'pi.dta'),
         name='data_prep_pi'

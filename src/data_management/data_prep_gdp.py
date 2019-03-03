@@ -13,11 +13,11 @@ import pandas as pd
 import json
 
 from bld.project_paths import project_paths_join as ppj
+from src.model_code.data_cleaner import data_cleaner
 
 
 def save_data(sample):
-    """Save cleaned data as .dta file.
-    """
+    """Save cleaned data as .dta file."""
     sample.to_stata(ppj("OUT_DATA", "gdp.dta"))
 
 
@@ -32,13 +32,7 @@ if __name__ == "__main__":
                        'Unit', 'IndustryClassification', 'Description'],
               inplace=True)
 
-    areas = data['GeoName'].unique().tolist()
-    for area in areas[:]:
-        if area in state_names['excluded_area']:
-            areas.remove(area)
-    data = data[(data.GeoName.isin(areas)) & (data.IndustryId == 1)]
-
-    data.replace(state_names, inplace=True)
+    data = data_cleaner(data[data.IndustryId == 1], 'GeoName', state_names)
 
     data = pd.wide_to_long(data, ['20'], i='GeoName', j='year').reset_index()
 
