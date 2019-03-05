@@ -25,7 +25,7 @@ Figure 2: Lending club loan volume and number development
 
 
 Figure 3: Traditional banking loan amount per capita development
-=============================================================
+================================================================
 
 .. include:: ../final/figure3_tradition.do
     :start-after: /*

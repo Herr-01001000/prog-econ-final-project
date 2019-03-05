@@ -25,10 +25,10 @@ def finder(list):
     """Find a specific pattern in a list by regular expression.
 
     Args:
-    list (list): the list where the function searches
+        list (list): the list where the function searches
 
     Returns:
-    container (list)
+        container (list)
     """
     container = []
     for string in list:
@@ -43,11 +43,12 @@ def add_year(data, years):
     """Add missing year observations to data.
 
     Arg:
-    data (pd.DataFrame): dataset with missing year observations
-    years (list): list of missing years(int)
+        data (pd.DataFrame): dataset with missing year observations
+
+        years (list): list of missing years(int)
 
     Returns:
-    data (pd.DataFrame)
+        data (pd.DataFrame)
     """
     for t in years:
         df = data.loc[data.year.isin([t - 1, t + 1])].mean().to_frame().T

@@ -13,17 +13,21 @@ def _obs_dropper(data, colname, names, key='excluded_area', nan=True):
     """Drop multiple observations in one column of data.
 
     Args:
-    data (pd.DataFrame): original dataset which observations will be
-    dropped from
-    colname (str): name of the column
-    names (dict): dictionary which includes the list of observations
-    that need to be dropped
-    key (str, default 'excluded_area'): the list's key in dictionary
-    nan (boolean, default True): drop empty observation rows in
-    the column if True
+        data (pd.DataFrame): original dataset which observations will be \
+            dropped from
+
+        colname (str): name of the column
+
+        names (dict): dictionary which includes the list of observations \
+            that need to be dropped
+
+        key (str, default 'excluded_area'): the list's key in dictionary
+
+        nan (boolean, default True): drop empty observation rows in \
+            the column if True
 
     Returns:
-    new_data (pd.DataFrame)
+        new_data (pd.DataFrame)
     """
     list = data[colname].unique().tolist()
     for i in list[:]:
@@ -41,11 +45,12 @@ def _abbr_swapper(data, names):
     """Replace the state names with their abbreviations.
 
     Args:
-    data (pd.DataFrame): original dataset which need name abbreviations
-    names (dict): dictionary of names and their abbreviations
+        data (pd.DataFrame): original dataset which need name abbreviations
+
+        names (dict): dictionary of names and their abbreviations
 
     Returns:
-    new_data (pd.DataFrame)
+        new_data (pd.DataFrame)
     """
     new_data = data.replace(names)
 
@@ -57,20 +62,26 @@ def data_cleaner(data, colname, names, key='excluded_area', drop=True, swap=True
     to replace the state names with their abbreviations.
 
     Args:
-    data (pd.DataFrame): original dataset
-    drop (boolean, default True): need to drop multiple observations
-    in one column of data if True
-    swap (boolean, default True): need to Replace the state names with
-    their abbreviations
-    nan (boolean, default True): drop empty observation rows in
-    the column if True
-    colname (str): name of the column
-    names (dict): dictionary which includes the list of observations
-    that need to be dropped
-    key (str, default 'excluded_area'): the list's key
+        data (pd.DataFrame): original dataset
+
+        colname (str): name of the column
+
+        names (dict): dictionary which includes the list of observations \
+            that need to be dropped
+
+        key (str, default 'excluded_area'): the list's key
+
+        drop (boolean, default True): need to drop multiple observations \
+            in one column of data if True
+
+        swap (boolean, default True): need to Replace the state names with \
+            their abbreviations
+
+        nan (boolean, default True): drop empty observation rows in \
+            the column if True
 
     Returns:
-    data (pd.DataFrame)
+        data (pd.DataFrame)
     """
     if drop:
         data = _obs_dropper(data, colname, names, key, nan)
@@ -87,15 +98,20 @@ def lag_generator(data, var, time, byvar=None, lag=1, nan=False):
     """Generate lagged variables by group or not.
 
     Args:
-    data (pd.DataFrame): original dataset where the variable is
-    var (str): name of the variable that need lag
-    time (str): name of the time variable
-    byvar (None or str, optional): name of the groupby variable
-    lag (int, default 1): lag periods
-    nan (boolean, default False): drop generated NaN due to lag if True
+        data (pd.DataFrame): original dataset where the variable is
+
+        var (str): name of the variable that need lag
+
+        time (str): name of the time variable
+
+        byvar (None or str, optional): name of the groupby variable
+
+        lag (int, default 1): lag periods
+
+        nan (boolean, default False): drop generated NaN due to lag if True
 
     Returns:
-    data (pd.DataFrame)
+        data (pd.DataFrame)
     """
     if byvar is None:
         data = data.sort_values(time)

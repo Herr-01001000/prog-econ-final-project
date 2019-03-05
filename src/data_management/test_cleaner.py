@@ -17,8 +17,7 @@ state_names = json.load(open(ppj("IN_MODEL_SPECS", "state_names.json"),
 
 
 @pytest.fixture
-def setup_predict():
-
+def setup_clean():
     out = {}
     out['data'] = pd.DataFrame(
         {
@@ -45,7 +44,7 @@ def setup_predict():
 
 
 @pytest.fixture
-def expected_predict():
+def expected_clean():
     out = {}
     out['data'] = pd.DataFrame(
         {
@@ -70,21 +69,21 @@ def expected_predict():
     return out
 
 
-def test_data_cleaner(setup_predict, expected_predict):
-    clean_data = data_cleaner(setup_predict['data'],
-                              setup_predict['colname'],
-                              setup_predict['names'])
+def test_data_cleaner(setup_clean, expected_clean):
+    clean_data = data_cleaner(setup_clean['data'],
+                              setup_clean['colname'],
+                              setup_clean['names'])
 
-    assert_frame_equal(clean_data, expected_predict['data'])
+    assert_frame_equal(clean_data, expected_clean['data'])
 
 
-def test_lag_generator(setup_predict, expected_predict):
-    new_lag_data = lag_generator(setup_predict['data'],
-                                 setup_predict['var'],
-                                 setup_predict['time'],
-                                 setup_predict['byvar'])
+def test_lag_generator(setup_clean, expected_clean):
+    new_lag_data = lag_generator(setup_clean['data'],
+                                 setup_clean['var'],
+                                 setup_clean['time'],
+                                 setup_clean['byvar'])
 
-    assert_frame_equal(new_lag_data, expected_predict['lag_data'])
+    assert_frame_equal(new_lag_data, expected_clean['lag_data'])
 
 
 if __name__ == "__main__":
