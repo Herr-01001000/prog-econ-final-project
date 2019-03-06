@@ -1,4 +1,4 @@
-"""The file "data_cleaner.py" is consist of multiple data cleaning functions.
+"""The file "data_cleaner.py" consists of multiple data cleaning functions.
 
 It can be used to:
     1. Drop multiple observations in one column of data by _obs_dropper();
